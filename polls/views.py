@@ -68,7 +68,7 @@ def signup(request):
         myuser=User.objects.create_user(username,email,pass1)
         myuser.first_name=username
         myuser.save()
-        messages.success(request,'Signed up successfully, please Log in.')
+        messages.info(request,'Signed up successfully, please Log in.')
         return redirect('loginn')
 
     return render(request,'polls/signup.html')
@@ -81,7 +81,7 @@ def loginn(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request,'Logged in successfully.')
+            messages.info(request,'Logged in successfully.')
             return redirect('index')
 
         else:
@@ -92,7 +92,7 @@ def loginn(request):
 
 def logout(request):
     logoutt(request)
-    messages.success(request,'Logged out successfully')
+    messages.info(request,'Logged out successfully')
     return redirect('index')
 
 
@@ -109,7 +109,7 @@ def addpoll(request):
         choice2=request.POST['choice2']
         poll=Poll(user=user,question=question, choice1=choice1, choice2=choice2)
         poll.save()
-        messages.success(request,'Poll added.')
+        messages.info(request,'Poll added.')
         return redirect('index')
 
     return render(request,'polls/addpoll.html')
