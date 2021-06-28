@@ -1,0 +1,103 @@
+{%extends 'polls/base.html'%}
+{%block head%}
+<style media="screen">
+.top{
+  text-align: center;
+}
+.mt-3 {
+display: flex;
+align-items: center;
+padding-top: 40px;
+padding-bottom: 40px;
+/* background-color: #f5f5f5; */
+}
+
+.form-signin {
+width: 100%;
+max-width: 330px;
+padding: 15px;
+margin: auto;
+}
+
+.form-signin .checkbox {
+font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+z-index: 2;
+}
+
+.form-signin input[type="text"] {
+margin-bottom: 10px;
+border-bottom-right-radius: 0;
+border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="email"] {
+margin-bottom: 10px;
+border-bottom-right-radius: 0;
+border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+margin-bottom: 10px;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+}
+img{
+  /* filter:grayscale(); */
+  height: 100px;
+  width: 200px;
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
+.lg{
+  margin-top: -20px;
+  display: block;
+}
+</style>
+{%endblock%}
+
+{%block body%}
+<div class="mt-3">
+
+</div>
+  <main class="form-signin">
+    <form method="post" action="signup">
+      {%csrf_token%}
+      <div class="top">
+        <!-- <img class="" src="static/notes.png" alt="" width="72" height="57"> -->
+      <h1 class="h3 mb-3 lg fw-normal">Please sign up</h1>
+    </div>
+
+    <div class="form-floating">
+       <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+       <label for="floatingInput">Email</label>
+     </div>
+
+      <div class="form-floating">
+        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+        <label for="floatingInput">Choose a username</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="password"name="pass1" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="password" name="pass2"class="form-control" id="floatingPassword1" placeholder="Confirm password">
+        <label for="floatingPassword">Confirm password</label>
+      </div>
+
+      <button class="w-100 btn btn-lg btn-light" type="submit">Sign up</button>
+    </form>
+  </main>
+</div>
+
+
+
+
+
+</body>
+{%endblock%}

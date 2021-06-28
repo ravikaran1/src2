@@ -1,0 +1,32 @@
+{%extends 'polls/base.html'%}
+{%block head%}
+<style media="screen">
+  #heading{
+    text-align: center;
+    margin-top: 5px;
+  }
+</style>
+{% endblock %}
+
+{%block body%}
+<h2 id='heading'>Make a poll to see what people think.</h2>
+<div class="container">
+<form action="addpoll" method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Question</label>
+    <input type="text" name='question' class="form-control" id="exampleInputEmail1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Choice1</label>
+    <input type="text" name='choice1' class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword2" class="form-label">Choice2</label>
+    <input type="text" name='choice2' class="form-control" id="exampleInputPassword2">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}
