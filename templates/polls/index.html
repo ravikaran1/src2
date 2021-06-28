@@ -61,11 +61,11 @@
  </div>
  {% endif %}
 
-{% if request.user.username|add:',' in i.voters %}
+{% if request.user.username|add:',' in i.voters or not user.is_authenticated %}
 {% for j  in votes %}
 {% if request.user.username == j.user.username and i.question == j.question and i.choice1 == j.choice %}
 <p></p>
- {% endif %}
+{% endif %}
  {% endfor %}
 
  {% else %}
@@ -91,7 +91,7 @@
  </div>
  {% endif %}
 
- {% if request.user.username|add:',' in i.voters %}
+ {% if request.user.username|add:',' in i.voters or not user.is_authenticated%}
  {% for j  in votes %}
  {% if request.user.username == j.user.username and i.question == j.question %}
 </div>

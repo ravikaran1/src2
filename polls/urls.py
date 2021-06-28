@@ -10,5 +10,7 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('editprof', views.editprof, name='editprof'),
     path('yourpolls', views.yourpolls, name='yourpolls'),
+    path('delet/<int:myid>', views.delet, name='delet'),
+
 
 ]

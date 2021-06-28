@@ -103,7 +103,6 @@ def addpoll(request):
         return redirect('loginn')
 
 
-
     if request.method=='POST':
         question=request.POST['question']
         choice1=request.POST['choice1']
@@ -188,3 +187,7 @@ def yourpolls(request):
     return render(request,'polls/yourpolls.html',context)
 
 # Create your views here.
+def delet(request,myid):
+    poll=Poll.objects.filter(id=myid)
+    poll.delete()
+    return redirect('yourpolls')
