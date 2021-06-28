@@ -97,11 +97,17 @@ def logout(request):
 
 
 def addpoll(request):
+    user=request.user
+    if not user.is_authenticated:
+        messages.error(request,'Please login to add a poll.')
+        return redirect('loginn')
+
+
+
     if request.method=='POST':
         question=request.POST['question']
         choice1=request.POST['choice1']
         choice2=request.POST['choice2']
-        user=request.user
         poll=Poll(user=user,question=question, choice1=choice1, choice2=choice2)
         poll.save()
         messages.success(request,'Poll added.')

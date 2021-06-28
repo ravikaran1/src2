@@ -36,7 +36,8 @@
    {%else%}
    {{i.user.username}}
    {%endif%}
-    <p style="font-size:15px;float:right;">Posted {{i.timest | timesince }} ago</p> </h5>
+   <br>
+    <p style="font-size:15px;float:left;">Posted {{i.timest | timesince }} ago</p> </h5>
 
 {% if request.user.username|add:',' not in i.voters or not user.is_authenticated %}
 <p style="font-size:25px;"id='question' class="card-text">{{i.question}}? <small>

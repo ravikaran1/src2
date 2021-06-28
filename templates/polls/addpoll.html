@@ -15,7 +15,9 @@
   {% csrf_token %}
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Question</label>
-    <input type="text" name='question' class="form-control" id="exampleInputEmail1">
+    <input type="text" name='question' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">This field is not mandatory.</div>
+
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Choice1</label>
@@ -26,7 +28,7 @@
     <input type="text" name='choice2' class="form-control" id="exampleInputPassword2">
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Add</button>
 </form>
 </div>
 {% endblock %}
