@@ -104,6 +104,13 @@
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
     }
+
+    @media (max-width:990px) {
+    #addapoll{
+      margin-bottom: 14px !important;
+
+    }
+  }
   </style>
 
   {%endblock%}
@@ -141,6 +148,7 @@
                       </div>
                     </div>
                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
+                  <button type="button" id="addapoll" class="btn btn-dark" name="button"><a style="text-decoration:none;color:white;" href="addpoll">Add a poll</a></button>
                   <button type="button" class="btn btn-dark" name="button"><a style="text-decoration:none;color:white;" href="yourpolls">View your polls</a></button>
                       <ul class="social-link list-unstyled m-t-40 m-b-10">
                         <li>
