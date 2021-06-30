@@ -32,7 +32,7 @@ class ListField(models.TextField):
 class Poll(models.Model):
     id=models.AutoField(primary_key=True)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
-    question=models.TextField()
+    question=models.TextField(default='ques')
     choice1=models.TextField()
     choice2=models.TextField()
     choice1_votes=models.IntegerField(default=0)
