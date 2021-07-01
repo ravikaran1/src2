@@ -11,7 +11,9 @@ def index(request):
         choice1=request.POST.get('choice1')
         choice2=request.POST.get('choice2')
         question=request.POST.get('question')
-        poll=Poll.objects.filter(question=question)[0]
+        id=request.POST.get('id')
+
+        poll=Poll.objects.filter(id=id)[0]
         voter_list=poll.voters
         voter_list+=request.user.username +','
         poll.voters=voter_list
@@ -107,10 +109,24 @@ def addpoll(request):
         question=request.POST['question']
         choice1=request.POST['choice1']
         choice2=request.POST['choice2']
-        poll=Poll(user=user,question=question, choice1=choice1, choice2=choice2)
-        poll.save()
-        messages.info(request,'Poll added.')
-        return redirect('index')
+        if Poll.objects.filter(question=question).exists():
+            if Poll.objects.filter(choice1=choice1).exists():
+                    messages.error(request,'Poll already posted, post another one.')
+                    return redirect('addpoll')
+
+            if Poll.objects.filter(choice2=choice2).exists():
+                    messages.error(request,'Poll already posted, post another one.')
+                    return redirect('addpoll')
+            else:
+                poll=Poll(user=user,question=question, choice1=choice1, choice2=choice2)
+                poll.save()
+                messages.info(request,'Poll added.')
+                return redirect('index')
+        else:
+            poll=Poll(user=user,question=question, choice1=choice1, choice2=choice2)
+            poll.save()
+            messages.info(request,'Poll added.')
+            return redirect('index')
 
     return render(request,'polls/addpoll.html')
 
@@ -156,7 +172,8 @@ def yourpolls(request):
         choice1=request.POST.get('choice1')
         choice2=request.POST.get('choice2')
         question=request.POST.get('question')
-        poll=Poll.objects.filter(question=question)[0]
+        id=request.POST.get('id')
+        poll=Poll.objects.filter(id=id)[0]
         voter_list=poll.voters
         voter_list+=request.user.username +','
         poll.voters=voter_list
