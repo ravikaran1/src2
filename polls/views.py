@@ -18,15 +18,15 @@ def index(request):
         voter_list+=request.user.username +','
         poll.voters=voter_list
         poll.save()
-        print(request.user.username)
-        print(poll.voters)
         if choice1!=None:
             vote=Vote(user=request.user,question=question,choice=choice1)
             vote.save()
             poll.choice1_votes+=1
             total=poll.choice1_votes+poll.choice2_votes
-            poll.percentage1=(poll.choice1_votes/total)*100
-            poll.percentage2=(poll.choice2_votes/total)*100
+            percentage1=(poll.choice1_votes/total)*100
+            poll.percentage1=round(percentage1)
+            percentage2=(poll.choice2_votes/total)*100
+            poll.percentage2=round(percentage2)
             poll.save()
 
         else:
@@ -34,8 +34,10 @@ def index(request):
             vote.save()
             poll.choice2_votes+=1
             total=poll.choice1_votes+poll.choice2_votes
-            poll.percentage2=(poll.choice2_votes/total)*100
-            poll.percentage1=(poll.choice1_votes/total)*100
+            percentage1=(poll.choice1_votes/total)*100
+            poll.percentage1=round(percentage1)
+            percentage2=(poll.choice2_votes/total)*100
+            poll.percentage2=round(percentage2)
             poll.save()
         return redirect('index')
     polls=Poll.objects.all().order_by('-timest')
@@ -184,8 +186,10 @@ def yourpolls(request):
             vote.save()
             poll.choice1_votes+=1
             total=poll.choice1_votes+poll.choice2_votes
-            poll.percentage1=(poll.choice1_votes/total)*100
-            poll.percentage2=(poll.choice2_votes/total)*100
+            percentage1=(poll.choice1_votes/total)*100
+            poll.percentage1=round(percentage1)
+            percentage2=(poll.choice2_votes/total)*100
+            poll.percentage2=round(percentage2)
             poll.save()
 
         else:
@@ -193,8 +197,10 @@ def yourpolls(request):
             vote.save()
             poll.choice2_votes+=1
             total=poll.choice1_votes+poll.choice2_votes
-            poll.percentage2=(poll.choice2_votes/total)*100
-            poll.percentage1=(poll.choice1_votes/total)*100
+            percentage1=(poll.choice1_votes/total)*100
+            poll.percentage1=round(percentage1)
+            percentage2=(poll.choice2_votes/total)*100
+            poll.percentage2=round(percentage2)
             poll.save()
         return redirect('yourpolls')
     polls=Poll.objects.filter(user=request.user).order_by('-timest')
